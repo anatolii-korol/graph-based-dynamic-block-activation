@@ -1,0 +1,34 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# graph_dynamic_block_activation — runtime dependencies (pinned)
+# ─────────────────────────────────────────────────────────────────────────────
+# Tested environment:
+#   Python 3.11.9
+#   Windows 11
+#   CUDA 12.1, NVIDIA GTX 1650 (4 GB VRAM)
+#
+# Install (CUDA 12.1):
+#     pip install -r requirements.txt --index-url https://download.pytorch.org/whl/cu121
+#
+# Install (CPU-only — slower, accuracy/FLOPs still reproducible):
+#     pip install -r requirements.txt
+#
+# For other CUDA versions follow the official PyTorch install instructions:
+#     https://pytorch.org/get-started/locally/
+# ─────────────────────────────────────────────────────────────────────────────
+
+
+# ─── Core ML stack ───────────────────────────────────────────────────────────
+torch==2.3.1
+torchvision==0.18.1
+
+
+# ─── Numerics ────────────────────────────────────────────────────────────────
+numpy==1.26.2
+
+
+# ─── Optional: GPU energy telemetry ──────────────────────────────────────────
+# Required only to populate the `energy_j_per_sample` field in benchmark
+# JSONs. The package degrades gracefully if pynvml is missing — accuracy,
+# FLOPs and latency are still reported correctly. Skip this line if you
+# do not need energy measurements (CPU-only runs, AMD GPUs, etc.).
+pynvml>=11.0.0
